@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\asp.net\\api\\StockMarket\\StockMarket.csproj": {}
+    "F:\\1269\\GitProjects\\StockMarket-API\\StockMarket\\StockMarket.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\asp.net\\api\\StockMarket\\StockMarket.csproj": {
+    "F:\\1269\\GitProjects\\StockMarket-API\\StockMarket\\StockMarket.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\asp.net\\api\\StockMarket\\StockMarket.csproj",
+        "projectUniqueName": "F:\\1269\\GitProjects\\StockMarket-API\\StockMarket\\StockMarket.csproj",
         "projectName": "StockMarket",
-        "projectPath": "D:\\Projects\\asp.net\\api\\StockMarket\\StockMarket.csproj",
-        "packagesPath": "C:\\Users\\MS.EBRAHIMI\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\asp.net\\api\\StockMarket\\obj\\",
+        "projectPath": "F:\\1269\\GitProjects\\StockMarket-API\\StockMarket\\StockMarket.csproj",
+        "packagesPath": "C:\\Users\\1269\\.nuget\\packages\\",
+        "outputPath": "F:\\1269\\GitProjects\\StockMarket-API\\StockMarket\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\MS.EBRAHIMI\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\1269\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -53,6 +43,22 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.24, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.24, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.24, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -78,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
