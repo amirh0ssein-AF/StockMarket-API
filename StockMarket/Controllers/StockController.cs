@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StockMarket.Data;
+using StockMarket.Mappers;
 
 namespace StockMarket.Controllers;
 
@@ -17,7 +18,8 @@ public class StockController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var stocks = _context.Stocks.ToList();
+        var stocks = _context.Stocks.ToList()
+            .Select(s => s.ToStockDto());
         return Ok(stocks);
     }
 
@@ -29,6 +31,6 @@ public class StockController : ControllerBase
         {
             return NotFound();
         }
-        return Ok(stock);
+        return Ok(stock.ToStockDto());
     }
 }
