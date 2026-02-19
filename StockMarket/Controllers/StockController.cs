@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using StockMarket.Data;
+using StockMarket.Dtos.Stock;
 using StockMarket.Mappers;
 
 namespace StockMarket.Controllers;
@@ -32,5 +33,14 @@ public class StockController : ControllerBase
             return NotFound();
         }
         return Ok(stock.ToStockDto());
+    }
+
+    [HttpPost]
+    public IActionResult Create([FromBody] CreateStockRequestDto stockDto)
+    {
+        var stockModel = stockDto.ToStockFromCreateDto();
+        _context.Stocks.Add(stockModel);
+        _context.SaveChanges();
+        return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel);
     }
 }
