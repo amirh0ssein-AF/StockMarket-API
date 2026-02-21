@@ -10,7 +10,6 @@ namespace StockMarket.Controllers;
 public class StockController : ControllerBase   
 {
     private readonly ApplicationDBContext  _context;
-
     public StockController(ApplicationDBContext context)
     {
         _context = context;
@@ -42,5 +41,25 @@ public class StockController : ControllerBase
         _context.Stocks.Add(stockModel);
         _context.SaveChanges();
         return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel);
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, [FromBody] UpdateStockDto updateDto)
+    {
+        var stockModel = _context.Stocks.FirstOrDefault(x => x.Id == id);
+
+        if (stockModel == null)
+        {
+            return NotFound();
+        }
+        stockModel.Symbol = updateDto.Symbol;
+        stockModel.CompanyName = updateDto.CompanyName;
+        stockModel.Purchase = updateDto.Purchase;
+        stockModel.LastDiv = updateDto.LastDiv;
+        stockModel.Industry = updateDto.Industry;
+        stockModel.MarketCap = updateDto.MarketCap;
+        
+        _context.SaveChanges();
+        return Ok(stockModel.ToStockDto());
     }
 }
