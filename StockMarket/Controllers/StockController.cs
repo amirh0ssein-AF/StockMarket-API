@@ -31,7 +31,7 @@ public class StockController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById([FromRoute]int id)
     {
-        var stock = await _context.Stocks.FindAsync(id);
+        var stock = await _stockRepository.GetByIdAsync(id);
         if (stock == null)
         {
             return NotFound();
@@ -43,28 +43,19 @@ public class StockController : ControllerBase
     public async Task<IActionResult> Create([FromBody] CreateStockRequestDto stockDto)
     {
         var stockModel = stockDto.ToStockFromCreateDto();
-        await _context.Stocks.AddAsync(stockModel);
-        await _context.SaveChangesAsync();
+        await _stockRepository.CreateAsync(stockModel);
         return CreatedAtAction(nameof(GetById), new { id = stockModel.Id }, stockModel);
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockDto updateDto)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateRequestDto)
     {
-        var stockModel = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
+        var stockModel = await _stockRepository.UpdateAsync(id , updateRequestDto);
 
         if (stockModel == null)
         {
             return NotFound();
         }
-        stockModel.Symbol = updateDto.Symbol;
-        stockModel.CompanyName = updateDto.CompanyName;
-        stockModel.Purchase = updateDto.Purchase;
-        stockModel.LastDiv = updateDto.LastDiv;
-        stockModel.Industry = updateDto.Industry;
-        stockModel.MarketCap = updateDto.MarketCap;
-        
-        await _context.SaveChangesAsync();
         return Ok(stockModel.ToStockDto());
     }
 

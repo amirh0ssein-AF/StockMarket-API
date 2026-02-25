@@ -1,6 +1,6 @@
 namespace StockMarket.Dtos.Stock;
 
-public class UpdateStockDto
+public class UpdateStockRequestDto
 {
     public string Symbol { get; set; } = string.Empty;
     public string CompanyName { get; set; } = string.Empty;
